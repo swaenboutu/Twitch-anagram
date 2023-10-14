@@ -1,8 +1,8 @@
 import React, { } from 'react';
 
-function AnagramSolution({initialWord}, {time}) {
+function AnagramSolution({initialWord, displaySolution}) {
 
-    if(0 === 0)
+    if(displaySolution)
     {
         return (
             <div>

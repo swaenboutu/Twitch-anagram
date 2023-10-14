@@ -18,8 +18,8 @@ function Timer (param) {
 
         setTimer(initMinutes.toString().padStart(2, '0')+":"+initSeconds.toString().padStart(2, '0'));
         setCurrentPercentage(100);
- 
-        // If you try to remove this line the 
+
+        // If you try to remove this line the
         // updating of timer Variable will be
         // after 1000ms or 1sec
         if (Ref.current) clearInterval(Ref.current);
@@ -37,26 +37,32 @@ function Timer (param) {
             total, minutes, seconds
         };
     }
-    
+
     function startTimer(e) {
-        let { total, minutes, seconds } 
+        let { total, minutes, seconds }
                     = getTimeRemaining(e);
         if (total >= 0) {
             setCurrentPercentage((100 * Math.floor(total / 1000) / maxDuration ));
-    
+
             // update the timer
-            // check if less than 10 then we need to 
+            // check if less than 10 then we need to
             // add '0' at the beginning of the variable
             setTimer(
                 (minutes > 9 ? minutes : '0' + minutes) + ':'
                 + (seconds > 9 ? seconds : '0' + seconds)
             )
+        } else {
+            // If we are done
+            // Clear the timer
+            clearInterval(Ref.current);
+            // And execute the callback function
+            param.onEnd();
         }
     }
- 
+
     function getDeadTime(t) {
         let deadline = new Date();
-        // This is where you need to adjust if 
+        // This is where you need to adjust if
         // you entend to add more time
         deadline.setSeconds(deadline.getSeconds() + parseInt(t));
         return deadline;
@@ -65,16 +71,16 @@ function Timer (param) {
     const onClickReset = () => {
         clearTimer(getDeadTime(maxDuration));
     }
- 
+
     // We can use useEffect so that when the component
     // mount the timer will start as soon as possible
- 
+
     // We put empty array to act as componentDid
     // mount only
     useEffect(() => {
         clearTimer(getDeadTime(maxDuration));
     }, []);
- 
+
     return (
         <div>
             <div className="jauge"><span className="jauge-remplissage" style={{height: 100-currentPercentage + '%'}}></span></div>
