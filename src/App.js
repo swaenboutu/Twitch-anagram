@@ -13,8 +13,16 @@ function StartButton({ onStartClick }) {
   }
 
 export default function main(){
+    const [isStarted, setIsStarted] = useState(false);
     const [solution, setSolution] = useState([]);
     const [anagram, setAnagram] = useState('');
+    const [displaySolution, setDisplaySolution] = useState(false);
+
+    useEffect(() => {
+        if (isStarted && anagram === '') {
+            generateAnagrams();
+        }
+    }, [isStarted, anagram])
 
     function generateAnagrams() {
         let initialWord = random_item(dictionary);
@@ -26,25 +34,44 @@ export default function main(){
         if(permutations.join('') == initialWord[0]){
             permutations = wordArray.sort(() => Math.random() - 0.5);
         }
-        setAnagram(permutations.join('')); 
+        setAnagram(permutations.join(''));
     };
+
+    function endTimer() {
+        setDisplaySolution(true);
+    }
 
     return (
         <>
             <h1>Anagram Generator</h1>
             <div>
-                <StartButton onStartClick={ () => generateAnagrams()} />
+                <StartButton onStartClick={ () => {
+                    setIsStarted(true);
+                    generateAnagrams();
+                }} />
             </div>
-            <Timer maxDuration='20' />
-            <Anagram anagram={anagram} />
-            <AnagramSolution initialWord={solution} />
+            {anagram !== '' ?
+            <>
+                <Timer maxDuration='20' onEnd={endTimer} />
+                <Anagram anagram={anagram} />
+                <AnagramSolution displaySolution={displaySolution} initialWord={solution} />
+                {displaySolution ?
+                    <>
+                        <Timer maxDuration='10' onEnd={() => {
+                            setAnagram('');
+                            setDisplaySolution(false);
+                        }} />
+                        On reprend dans 10 secondes
+                    </> : null}
+            </>
+            : null}
         </>
     );
 }
 
 function random_item(items)
 {
-    return items[Math.floor(Math.random()*items.length)];    
+    return items[Math.floor(Math.random()*items.length)];
 }
 
 function clearInitialWord(s){
@@ -56,7 +83,7 @@ function clearInitialWord(s){
     r = r.replace(new RegExp(/ç/g),"c");
     r = r.replace(new RegExp(/[èéêë]/g),"e");
     r = r.replace(new RegExp(/[ìíîï]/g),"i");
-    r = r.replace(new RegExp(/ñ/g),"n");                
+    r = r.replace(new RegExp(/ñ/g),"n");
     r = r.replace(new RegExp(/[òóôõö]/g),"o");
     r = r.replace(new RegExp(/œ/g),"oe");
     r = r.replace(new RegExp(/[ùúûü]/g),"u");
