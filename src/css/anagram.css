@@ -1,0 +1,21 @@
+.anagram {
+    font-weight: 600;
+    text-align: center;
+    font-size: 12em;
+    font-style: normal;
+    line-height: normal;
+    height: 300px;
+    background-color: var(--main-gradient-color-1);
+    background: linear-gradient(180deg, var(--main-gradient-color-2) 0%, var(--main-gradient-color-1) 82.56%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0%;
+  }
+  
+  .defintion{
+    color: var(--main-text-color);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+    margin-top: 0;
+  }

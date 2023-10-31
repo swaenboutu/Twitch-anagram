@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Koulen');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+    --main-bg-color: green;
+    --main-text-color: #FFF;
+    --main-gradient-color-1: #003865;
+    --main-gradient-color-2: #0084D4;  
+  }
