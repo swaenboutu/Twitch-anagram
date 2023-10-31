@@ -5,15 +5,15 @@ function AnagramSolution({initialWord, displaySolution}) {
     if(displaySolution)
     {
         return (
-            <div>
-                <p>Réponse : {initialWord[0]}</p>
-                <p>Définition : {initialWord[1]}</p>
+            <div class="anagram-solution">
+                <p class="anagram">{initialWord[0]}</p>
+                <p class="defintion">{initialWord[1]}</p>
             </div>
         );
     }
     return (
         <div>
-            Aller on cherche
+            &nbsp;
         </div>
     );
 }
