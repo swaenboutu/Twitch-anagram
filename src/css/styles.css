@@ -3,7 +3,7 @@
 @import url(anagram.css);
 
 body{
-  font-family: 'Koulen', sans-serif;
+  font-family: 'Roboto slab', sans-serif;
   background-color:var(--main-bg-color);
   display: grid;
   grid-gap: 10px;

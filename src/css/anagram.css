@@ -1,7 +1,7 @@
 .anagram {
-    font-weight: 600;
+    /* font-weight: 700; */
     text-align: center;
-    font-size: 12em;
+    font-size: 10em;
     font-style: normal;
     line-height: normal;
     height: 300px;
@@ -11,6 +11,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0%;
+    text-transform: uppercase;
   }
   
   .defintion{
