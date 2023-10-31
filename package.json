@@ -19,6 +19,7 @@
     "anagram",
     "Twitch"
   ],
+  "homepage": ".",
   "author": "Swaen Boutu",
   "license": "MIT",
   "browserslist": {
