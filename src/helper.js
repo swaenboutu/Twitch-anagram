@@ -18,4 +18,9 @@ function clearInitialWord(s){
     return null;
 }
 
-export default clearInitialWord;
+function getRandomItem(items)
+{
+    return items[Math.floor(Math.random()*items.length)];
+}
+
+export {clearInitialWord, getRandomItem};

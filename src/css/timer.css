@@ -1,23 +1,31 @@
-.timer{
+.timer {
     margin-left:auto;
     margin-right: auto;
     text-align: center;
   }
   
-  #timer-text{
+  #timer-text {
     font-family: 'Koulen', sans-serif;
     font-size: x-large;
     text-align:center;
   }
   
-  #rotating-dot{
+  #timer-rotating-dot {
     fill: var(--main-gradient-color-1);
   }
   
-  #timer-text{
+  #timer-text {
     fill: var(--main-text-color);
   }
 
-  #rotating-border{
+  #timer-rotating-border {
     stroke: var(--main-gradient-color-1);
+  }
+
+  #timer-border {
+    stroke: var(--timer-strock-color);
+  }
+
+  #timer-background {
+    fill: var(--timer-background-color);
   }

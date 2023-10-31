@@ -1,5 +1,5 @@
-import React, { useState} from 'react';
-import clearInitialWord from './helper';
+import React from 'react';
+import {clearInitialWord} from './helper';
 
 var winner = null;
 
@@ -36,16 +36,9 @@ function ReadTwitchMessages({channel, solution}) {
     client.on('message', (channel, tags, message, self) => {
         if (self) return;
 
-        if(clearInitialWord(message).includes(solution)) {
-            // console.log(message, "tags['display-name']", tags['display-name']);
-            if(winner === null)
-            {
-                winner = tags['display-name'];
-            }
+        if(clearInitialWord(message).includes(solution) && winner === null) {
+            winner = tags['display-name'];
         }
-        // else{
-        //     console.log("message Else", message);
-        // }
     });     
 }
 

@@ -70,14 +70,6 @@ function Timer (param) {
         return deadline;
     }
 
-    //For now, there is no need of the "reset" button.
-    // const onClickReset = () => {
-    //     clearTimer(getDeadTime(maxDuration));
-    //     document.querySelectorAll("animateTransform").forEach((element) => {
-    //         element.beginElement();
-    //       });
-    // }
-
     useEffect(() => {
         clearTimer(getDeadTime(maxDuration));
     }, []);
@@ -87,12 +79,12 @@ function Timer (param) {
         <footer className="timer">
             {/* <button onClick={onClickReset}>Reset</button> */}
             <svg width={150} height={150}>
-                {<circle id="rotating-border" cx={55} cy={65} r={radius} fill="transparent" strokeWidth={10} />}
-                {<circle id="timer-border" cx={55} cy={65} r={radius} fill="transparent" stroke='#A0A0A0' strokeWidth={10} strokeDasharray={[circumference - strokeDasharray, strokeDasharray]} strokeDashoffset={strokeOffset} />}
-                {<circle cx={55} cy={65} r={radius} fill="black" />}
-                <circle id="rotating-dot" r={10} cx={55} cy={13} />
-                <animateTransform href='#rotating-dot' attributeName="transform" type='rotate' from={"0 55 65"} to={"360  55 65"} dur={maxDuration.toString()+"s"} repeatCount="1" restart="always"/>
-                <text id="timer-text" x="35" y="74" >{timer}</text>
+                {<circle id="timer-rotating-border" cx={55} cy={65} r={radius} fill="transparent" strokeWidth={10} />}
+                {<circle id="timer-border" cx={55} cy={65} r={radius} fill="transparent"  strokeWidth={10} strokeDasharray={[circumference - strokeDasharray, strokeDasharray]} strokeDashoffset={strokeOffset} />}
+                {<circle id="timer-background" cx={55} cy={65} r={radius} />}
+                <circle id="timer-rotating-dot" r={10} cx={55} cy={13} />
+                <animateTransform href='#timer-rotating-dot' attributeName="transform" type='rotate' from={"0 55 65"} to={"360  55 65"} dur={maxDuration.toString()+"s"} repeatCount="1" restart="always"/>
+                <text id="timer-text" x="34" y="74" >{timer}</text>
             </svg>
         </footer>
     )

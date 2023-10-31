@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import dictionary from './consts/dictionary';
-import channels from './consts/twitchInfos';
+import {channels, durations} from './consts/variables';
 import Anagram from './anagramDisplay';
 import AnagramSolution from './anagramSolution';
 import Timer from './timer';
 import {ReadTwitchMessages , FirstWinner, resetWinner} from './twitchConnection';
-import clearInitialWord from './helper';
+import {clearInitialWord, getRandomItem} from './helper';
 
 function StartButton({ onStartClick }) {
     return (
@@ -28,7 +28,7 @@ export default function main(){
     }, [isStarted, anagram])
 
     function generateAnagrams() {
-        let initialWord = random_item(dictionary);
+        let initialWord = getRandomItem(dictionary);
         setSolution(initialWord);
         let clearAnagram = clearInitialWord(initialWord[0]);
         const wordArray = clearAnagram.split('');
@@ -47,13 +47,6 @@ export default function main(){
 
     return (
         <>
-        <div>
-            <StartButton onStartClick={ () => {
-                setIsStarted(true);
-                generateAnagrams();
-                // todo :reset Timer
-            }} />
-        </div>
         <div id="title">
             <h1>Je reviens vite</h1>
         </div>
@@ -64,24 +57,27 @@ export default function main(){
                 <>
                     <p className={'subtitle'}>En attendant, voila un anagramme :</p>
                     <Anagram anagram={anagram} />
-                    <Timer maxDuration='30' onEnd={endTimer} />
+                    <Timer maxDuration={durations.timeToSearch} onEnd={endTimer} />
                 </> : null}
                 {displaySolution ?
                     <>
                     <FirstWinner />
                     <AnagramSolution displaySolution={displaySolution} initialWord={solution} />
-                    <Timer maxDuration='20' onEnd={() => {
+                    <Timer maxDuration={durations.displayAnswerDuration} onEnd={() => {
                         setAnagram('');
                         setDisplaySolution(false);
                     }} />
                     </> : null}
             </>
-            : null}
+            : 
+            <>
+            <div>
+                <StartButton onStartClick={ () => {
+                    setIsStarted(true);
+                    generateAnagrams();
+                    }} />
+            </div>
+            </>}
         </>
     );
-}
-
-function random_item(items)
-{
-    return items[Math.floor(Math.random()*items.length)];
 }
