@@ -5,9 +5,9 @@ function AnagramSolution({initialWord, displaySolution}) {
     if(displaySolution)
     {
         return (
-            <div class="anagram-solution">
-                <p class="anagram">{initialWord[0]}</p>
-                <p class="defintion">{initialWord[1]}</p>
+            <div className="anagram-solution">
+                <p className="anagram">{initialWord[0]}</p>
+                <p className="defintion">{initialWord[1]}</p>
             </div>
         );
     }

@@ -21,7 +21,7 @@ function AnagramResult({initialWord}) {
 function Anagram({anagram}) {
     return (
         <div>
-            <h2 class="anagram">{anagram}</h2>
+            <h2 className="anagram">{anagram}</h2>
         </div>
     );
 }

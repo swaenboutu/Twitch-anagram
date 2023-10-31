@@ -63,7 +63,7 @@ export default function main(){
                 {!displaySolution ?
                 <>
                     <Anagram anagram={anagram} />
-                    <Timer maxDuration='10' onEnd={endTimer} />
+                    <Timer maxDuration='30' onEnd={endTimer} />
                 </> : null}
                 {displaySolution ?
                     <>
