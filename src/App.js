@@ -4,7 +4,7 @@ import channels from './consts/twitchInfos';
 import Anagram from './anagramDisplay';
 import AnagramSolution from './anagramSolution';
 import Timer from './timer';
-import {Rtm, FirstWinner, resetWinner} from './twitchConnection';
+import {ReadTwitchMessages , FirstWinner, resetWinner} from './twitchConnection';
 import clearInitialWord from './helper';
 
 function StartButton({ onStartClick }) {
