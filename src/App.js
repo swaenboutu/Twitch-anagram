@@ -45,6 +45,12 @@ export default function main(){
         setDisplaySolution(true);
     }
 
+    if(!isStarted)
+    {
+        setIsStarted(true);
+        generateAnagrams();
+    }
+
     return (
         <>
         <div id="title">
@@ -69,15 +75,7 @@ export default function main(){
                     }} />
                     </> : null}
             </>
-            : 
-            <>
-            <div>
-                <StartButton onStartClick={ () => {
-                    setIsStarted(true);
-                    generateAnagrams();
-                    }} />
-            </div>
-            </>}
+            :  null }
         </>
     );
 }
