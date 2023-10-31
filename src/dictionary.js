@@ -1,7 +1,7 @@
 const dictionary = [
   ["Abaisse","Morceau de pâte (brisée, sablée etc...) amincie à l'aide d'un rouleau à pâtisserie"],
   ["Abaisser","Action d'étaler une pâte à l'aide d'un rouleau à pâtisserie ou d'un laminoir"],
-  ["Abats","Parties comestibles des animaux de boucherie: coeur, cervelle, foie, tête, pied,rognon, amourettes. Les foies gras de canard et d'oie ne rentrent pas dans la catégorie 'abats, 'Abattis',Ailerons, cous, coeurs, foies, gésiers, pattes, de volailles ou de gibiers à plumes"],
+  ["Abats","Parties comestibles des animaux de boucherie: coeur, cervelle, foie, tête, pied,rognon, amourettes."],
   ["Abricoter","Etendre du nappage (sirop épais, coulis...) à l'aide d'un pinceau sur les fruits d'une tarte par exemple pour la rendre brillante"],
   ["Aiguillette","Fines tranches de filet de volaille"],
   ["Airelles","Petits fruits rouges très aigres et acides qui accompagnent souvent le gibier"],

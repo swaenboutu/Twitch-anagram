@@ -13,7 +13,7 @@ function AnagramResult({initialWord}) {
     }
     return (
         <div>
-            Aller on cherche
+            &nbsp;
         </div>
     );
 }
@@ -21,8 +21,7 @@ function AnagramResult({initialWord}) {
 function Anagram({anagram}) {
     return (
         <div>
-        Voilà le mot à rechercher
-        <h2>{anagram}</h2>
+            <h2 class="anagram">{anagram}</h2>
         </div>
     );
 }
