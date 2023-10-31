@@ -35,7 +35,10 @@ body{
   padding: 0%;
 }
 
-#title p{
+.subtitle {
+  color: var(--main-text-color);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
   font-size: 80px;
   font-style: normal;
   font-weight: 200;

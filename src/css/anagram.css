@@ -20,3 +20,7 @@
     font-size: 2em;
     margin-top: 0;
   }
+
+  #winner-name {
+    color: var(--main-gradient-color-2);
+  }

@@ -1,39 +1,52 @@
-import React, { } from 'react';
+import React, { useState} from 'react';
 import clearInitialWord from './helper';
 
-function ConnectToTwich() {
-    const tmi = require('tmi.js');
-    const client = new tmi.Client({
-        channels: [ channel ]
-    });
-    client.connect().catch(console.error);
+var winner = null;
 
-    return client;
+function FirstWinner(){
+    console.log("winner", winner);
+    if(winner != null)
+    {
+        return (
+            <p className={'subtitle'}>
+                <span id="winner-name">{winner}</span> a été le premier à trouver!
+            </p>
+        );
+    }
+    
+    return (
+        <div>
+            &nbsp;
+        </div>
+    );
 }
 
-function Tmi({solution}) {
+function resetWinner(){
+    winner = null;
+}
 
-    const channel = 'redswaen';
+function ReadTwitchMessages({channel, solution}) {
     const tmi = require('tmi.js');
     const client = new tmi.Client({
-        channels: [ channel ]
+        channels: channel
     });
     client.connect().catch(console.error);
     solution = clearInitialWord(solution);
-    
-    client.on('message', (channel, tags, message, self) => {    
+
+    client.on('message', (channel, tags, message, self) => {
         if (self) return;
 
-        if(clearInitialWord(message).includes(solution)) {   
-            console.log(`${tags['msg-id']}`);
-            console.log(`${tags['display-name']}`);
-            return (
-                <div>
-                    ${tags['display-name']} à gagné!
-                </div>
-            );
+        if(clearInitialWord(message).includes(solution)) {
+            // console.log(message, "tags['display-name']", tags['display-name']);
+            if(winner === null)
+            {
+                winner = tags['display-name'];
+            }
         }
+        // else{
+        //     console.log("message Else", message);
+        // }
     });     
 }
 
-export {Tmi, ConnectToTwich};
+export {ReadTwitchMessages, FirstWinner, resetWinner};
