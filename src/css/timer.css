@@ -15,7 +15,7 @@
   }
   
   #timer-text {
-    fill: var(--main-text-color);
+    fill: #fff;
   }
 
   #timer-rotating-border {
