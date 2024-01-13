@@ -7,14 +7,6 @@ import Timer from './timer';
 import {ReadTwitchMessages , FirstWinner, resetWinner} from './twitchConnection';
 import {clearInitialWord, getRandomItem} from './helper';
 
-function StartButton({ onStartClick }) {
-    return (
-      <button onClick={onStartClick}>
-        Start
-      </button>
-    );
-  }
-
 export default function main(){
     const [isStarted, setIsStarted] = useState(false);
     const [solution, setSolution] = useState([]);

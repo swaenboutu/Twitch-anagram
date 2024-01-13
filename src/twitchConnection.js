@@ -36,6 +36,7 @@ function ReadTwitchMessages({channel, solution}) {
     client.on('message', (channel, tags, message, self) => {
         if (self) return;
 
+        console.log("context['custom-reward-id']", tags["custom-reward-id"]);
         if(clearInitialWord(message).includes(solution) && winner === null) {
             winner = tags['display-name'];
         }
@@ -43,3 +44,4 @@ function ReadTwitchMessages({channel, solution}) {
 }
 
 export {ReadTwitchMessages, FirstWinner, resetWinner};
+// Custom-reward-Id / prochain plat : 7b835d34-fc90-4b46-b494-57927d043760
