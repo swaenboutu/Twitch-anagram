@@ -30,7 +30,6 @@ export default function main(){
         }
         setAnagram(permutations.join(''));
         resetWinner();
-        
     };
 
     function endTimer() {

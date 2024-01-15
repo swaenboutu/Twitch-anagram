@@ -27,10 +27,18 @@ function resetWinner(){
 
 function ReadTwitchMessages({channel, solution}) {
     const tmi = require('tmi.js');
+    const [connected, setConnected] = useState(false);
+
     const client = new tmi.Client({
         channels: channel
     });
-    client.connect().catch(console.error);
+
+    if(connected === false)
+    {
+        client.connect().catch(console.error);
+        setConnected(true);
+    }
+
     solution = clearInitialWord(solution);
 
     client.on('message', (channel, tags, message, self) => {
@@ -44,4 +52,3 @@ function ReadTwitchMessages({channel, solution}) {
 }
 
 export {ReadTwitchMessages, FirstWinner, resetWinner};
-// Custom-reward-Id / prochain plat : 7b835d34-fc90-4b46-b494-57927d043760
