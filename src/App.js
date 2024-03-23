@@ -17,21 +17,21 @@ export default function main(){
 
     useEffect(() => {
         if(dictionary === null){
-            // fetch(`https://api.github.com/gists/${githubGistsinfos.UUID}`)
-            // .then((response) => {
-            //     return response.json();
-            // })
-            // .then((data) => {
-            //     setDictionnay(JSON.parse(data.files[githubGistsinfos.filename].content));
-            //     setIsStarted(true);
-            // })
-            // .catch(function(error) {
-            //     console.error(error);
-            // });
-            const json = '{"result":true, "count":42}';
-            const obj = JSON.parse(json);
-            setDictionnay(JSON.parse('[["Abaisser","Éta"]]'));
-            setIsStarted(true);
+            fetch(`https://api.github.com/gists/${githubGistsinfos.UUID}`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                setDictionnay(JSON.parse(data.files[githubGistsinfos.filename].content));
+                setIsStarted(true);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+            // const json = '{"result":true, "count":42}';
+            // const obj = JSON.parse(json);
+            // setDictionnay(JSON.parse('[["Abaisser","Éta"]]'));
+            // setIsStarted(true);
         }
 
         if (isStarted && anagram === '') {
