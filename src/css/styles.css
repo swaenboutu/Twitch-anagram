@@ -1,6 +1,7 @@
 @import url(variables.css);
 @import url(timer.css);
 @import url(anagram.css);
+@import url(winner.css);
 
 body{
   font-family: 'Roboto slab', sans-serif;
