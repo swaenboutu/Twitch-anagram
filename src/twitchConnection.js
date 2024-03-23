@@ -1,36 +1,15 @@
 import { useState } from 'react';
 import {clearInitialWord} from './helper';
+import {updateWinner} from './consts/firstWinner';
 
-var winner = null;
 
-function FirstWinner(){
-    console.log("winner", winner);
-    if(winner != null)
-    {
-        return (
-            <p className={'subtitle'}>
-                <span id="winner-name">{winner}</span> a été le premier à trouver!
-            </p>
-        );
-    }
-    
-    return (
-        <div>
-            &nbsp;
-        </div>
-    );
-}
-
-function resetWinner(){
-    winner = null;
-}
-
-function ReadTwitchMessages({channel, solution}) {
+function ReadTwitchMessages(param) {
     const tmi = require('tmi.js');
     const [connected, setConnected] = useState(false);
+    const [winner, setWinner] = useState(null);
 
     const client = new tmi.Client({
-        channels: channel
+        channels: param.channel
     });
 
     if(connected === false)
@@ -39,16 +18,16 @@ function ReadTwitchMessages({channel, solution}) {
         setConnected(true);
     }
 
-    solution = clearInitialWord(solution);
+    var solution = clearInitialWord(param.solution);
 
     client.on('message', (channel, tags, message, self) => {
         if (self) return;
-
-        console.log("context['custom-reward-id']", tags["custom-reward-id"]);
         if(clearInitialWord(message).includes(solution) && winner === null) {
-            winner = tags['display-name'];
+            setWinner(tags['display-name']);
+            updateWinner(tags['display-name']);
+            param.whenFound();
         }
     });     
 }
 
-export {ReadTwitchMessages, FirstWinner, resetWinner};
+export {ReadTwitchMessages};

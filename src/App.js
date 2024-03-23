@@ -4,8 +4,9 @@ import {channels, githubGistsinfos, durations} from './consts/variables';
 import Anagram from './anagramDisplay';
 import AnagramSolution from './anagramSolution';
 import Timer from './timer';
-import {ReadTwitchMessages , FirstWinner, resetWinner} from './twitchConnection';
+import {ReadTwitchMessages} from './twitchConnection';
 import {clearInitialWord, getRandomItem} from './helper';
+import { FirstWinner, updateWinner } from './consts/firstWinner';
 
 export default function main(){
     const [isStarted, setIsStarted] = useState(false);
@@ -44,7 +45,7 @@ export default function main(){
             permutations = wordArray.sort(() => Math.random() - 0.5);
         }
         setAnagram(permutations.join(''));
-        resetWinner();
+        updateWinner(null);
     };
 
     function endTimer() {
@@ -58,12 +59,15 @@ export default function main(){
         </div>
             {anagram !== '' ?
             <>
-                <ReadTwitchMessages solution={solution[0]} channel={channels}/>
+                <ReadTwitchMessages solution={solution[0]} channel={channels} whenFound={endTimer} />
                 {!displaySolution ?
                 <>
                     <p className={'subtitle'}>En attendant, voila un anagramme :</p>
                     <Anagram anagram={anagram} />
-                    <Timer maxDuration={durations.timeToSearch} onEnd={endTimer} />
+                    <Timer maxDuration={durations.timeToSearch} onEnd={() => {
+                        setAnagram('');
+                        setDisplaySolution(false);
+                    }} />
                 </> : null}
                 {displaySolution ?
                     <>
