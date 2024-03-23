@@ -1,4 +1,6 @@
-const dictionary = [
+Here is an example of a French dictionnary you can use in your own Github Gists, juste copy/pst the following lines in your file :
+---------
+[
   ["Abaisser","Étaler à l'aide d'un rouleau à pâtisserie une pâte brisée, sablée, feuilletée sur une surface farinée pour lui donner la forme souhaitée. Cette pâte prend le nom d'abaisse"],
   ["Abats","Tête de veau, cervelle, langue, ris de veau, foie  de  porc, foie de veau, rognons de porc  et de veau, queue de porc, tripes"],
   ["Abattis","Partie de volaille ou gibier à plumes : aileron, membre, cou, patte, gésier, cœur, foie"],
@@ -277,6 +279,4 @@ const dictionary = [
   // ["Vol-au-vent","Entrée chaude composée d'une croûte ronde en pâte feuilletée remplie de garnitures"],
   ["Wok","Ustensile d'origine chinoise en forme de grande poêle arrondie et demi-sphérique permettant de saisir les aliments au centre et de les retourner très facilement"],
   ["Zester","Découper un léger ruban d'écorce, sans partie blanche, sur un agrume (orange, citron, pamplemousse...)"]
-  ];
-
-  export default dictionary;
+]

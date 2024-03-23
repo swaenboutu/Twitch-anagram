@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import dictionary from './consts/dictionary';
-import {channels, durations} from './consts/variables';
+// import dictionary from './consts/dictionary';
+import {channels, githubGistsinfos, durations} from './consts/variables';
 import Anagram from './anagramDisplay';
 import AnagramSolution from './anagramSolution';
 import Timer from './timer';
@@ -12,12 +12,27 @@ export default function main(){
     const [solution, setSolution] = useState([]);
     const [anagram, setAnagram] = useState('');
     const [displaySolution, setDisplaySolution] = useState(false);
+    const [dictionary, setDictionnay] = useState(null);
 
     useEffect(() => {
+        if(dictionary === null){
+            fetch(`https://api.github.com/gists/${githubGistsinfos.UUID}`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                setDictionnay(JSON.parse(data.files[githubGistsinfos.filename].content));
+                setIsStarted(true);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+        }
+
         if (isStarted && anagram === '') {
             generateAnagrams();
         }
-    }, [isStarted, anagram])
+    }, [isStarted, anagram]);
 
     function generateAnagrams() {
         let initialWord = getRandomItem(dictionary);
@@ -25,7 +40,7 @@ export default function main(){
         let clearAnagram = clearInitialWord(initialWord[0]);
         const wordArray = clearAnagram.split('');
         let  permutations = wordArray.sort(() => Math.random() - 0.5);
-        if(permutations.join('') == initialWord[0]){
+        while(permutations.join('') == initialWord[0]){
             permutations = wordArray.sort(() => Math.random() - 0.5);
         }
         setAnagram(permutations.join(''));
@@ -34,12 +49,6 @@ export default function main(){
 
     function endTimer() {
         setDisplaySolution(true);
-    }
-
-    if(!isStarted)
-    {
-        setIsStarted(true);
-        generateAnagrams();
     }
 
     return (
