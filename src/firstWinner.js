@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { generateRandom } from '../helper';
+import { generateRandom } from './helper';
 
 var winner = null;
 

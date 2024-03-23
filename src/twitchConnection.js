@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {clearInitialWord} from './helper';
-import {updateWinner} from './consts/firstWinner';
+import {updateWinner} from './firstWinner';
 
 
 function ReadTwitchMessages(param) {
