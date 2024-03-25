@@ -69,8 +69,7 @@ export default function main(){
                     <p className={'subtitle'}>En attendant, voila un anagramme :</p>
                     <Anagram anagram={anagram} />
                     <Timer maxDuration={durations.timeToSearch} onEnd={() => {
-                        setAnagram('');
-                        setDisplaySolution(false);
+                        setDisplaySolution(true);
                     }} />
                 </> : null}
                 {displaySolution ?
