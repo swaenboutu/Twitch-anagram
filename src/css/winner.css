@@ -2,6 +2,7 @@
   /*Winner's name part; it has to be a big party \o/*/
   #winner-name {
     color: var(--main-gradient-color-2);
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
 .particletext {
