@@ -53,7 +53,6 @@ export default function main(){
     };
 
     function endTimer() {
-        setAnagram('');
         setDisplaySolution(true);
     }
 

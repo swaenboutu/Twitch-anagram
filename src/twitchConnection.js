@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {clearInitialWord} from './helper';
-import {updateWinner} from './firstWinner';
+import {getWinner, updateWinner} from './firstWinner';
 
 
 function ReadTwitchMessages(param) {
@@ -22,7 +22,7 @@ function ReadTwitchMessages(param) {
 
     client.on('message', (channel, tags, message, self) => {
         if (self) return;
-        if(clearInitialWord(message).includes(solution) && winner === null) {
+        if(clearInitialWord(message).includes(solution) && getWinner() === null) {
             setWinner(tags['display-name']);
             updateWinner(tags['display-name']);
             param.whenFound();
