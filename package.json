@@ -3,7 +3,10 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.0",
-    "tmi.js": "^1.8.5"
+    "tmi.js": "^1.8.5",
+    "webpack": "^5.99.5",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
   },
   "name": "index",
   "version": "1.0.0",
